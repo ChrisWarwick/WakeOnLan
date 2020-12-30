@@ -119,7 +119,7 @@ Param (
 
             # Split and convert the MAC address to an array of bytes
 
-            $Mac = $MacString.Split('-:') | Foreach {[Byte]"0x$_"}
+            $Mac = $MacString -Split '-|:' | ForEach-Object {[Byte]"0x$_"}
 
             # WOL Packet is a byte array with the first six bytes 0xFF, followed by 16 copies of the MAC address
 
